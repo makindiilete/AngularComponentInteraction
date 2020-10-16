@@ -1,0 +1,41 @@
+<h2>Parent Component</h2>
+<!--@Input Decorator : - Passing prop to child-->
+
+<!--inside the child selector/tag, we pass the loggedIn prop to d child component-->
+<!--<app-child [loggedIn]="loggedIn"></app-child>-->
+
+<!--=====================================================================================-->
+<!--Using custom prop/input name-->
+<!--[childExpectedValue] : - ds is the name d child component expect => d string inside @Input("string") or if d child component pass no arg, d name here will b the child component property name
+="loggedIn" : - This is the name of the property inside the parent component where child component wanna take its value from
+-->
+
+<!--<app-child [childExpectedValue]="loggedIn"></app-child>-->
+
+<!--=====================================================================================-->
+
+<!--@Input decorator with getter & setter-->
+<!--onClick of login button, we set d property value in the class to true-->
+<button (click)="loggedIn = true">Login</button>
+<!--onClick of login button, we set d property value in the class to false-->
+<button (click)="loggedIn = false">Log Out</button>
+{{ loggedIn }}
+
+<!--We pass the 'loggedIn' prop to the child component so the child component can make use of it using its 'loggedIn2' field but ds 'loggedIn2' here is a setter dt check received value of the prop and store it into its private property field or perform a logic with it-->
+<!--<app-child [loggedIn2]="loggedIn"></app-child>-->
+
+<!--=====================================================================================-->
+<!--ngOnChanges life cycle hook-->
+<!--<app-child [loggedInPropWithNgOnChange]="loggedIn"></app-child>-->
+
+<!--=====================================================================================-->
+<!--Pass props from child to parent-->
+
+<app-child #childProps></app-child>
+<!--print our the value of 'name' property in the parent component -->
+{{ childProps.name }}
+
+<!--Call a method inside d child component on click of a button in the parent template-->
+<button (click)="childProps.greetMichaelz()">
+  Greet {{ childProps.name }}
+</button>
